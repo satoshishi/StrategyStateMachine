@@ -1,0 +1,9 @@
+{
+  "name": "com.carp.strategystatemachine",
+  "displayName": "StrategyStateMachine",
+  "version": "1.0.0",
+  "unity": "2020.1",
+  "author": {
+    "name": "StrategyStateMachine"
+  }
+}
