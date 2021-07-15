@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace StatMachine.Observer
+namespace StateMachine.Observer
 {
 
     public class SimplyObservable<T> : IDisposable
