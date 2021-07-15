@@ -1,0 +1,20 @@
+{
+    "name": "UniTaskSTM.Installer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ebc4b8d9d57a148398a1295381ed7157",
+        "GUID:7015b1b5a6aac49268fd989bd7f1b6a1",
+        "GUID:b831a3abe5edd4eaebd270b8b6a311ea",
+        "GUID:5e1a477a0a50e4a7b854bd6bde14c453",
+        "GUID:000f56f991d184af18dd0820736e0a26"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
