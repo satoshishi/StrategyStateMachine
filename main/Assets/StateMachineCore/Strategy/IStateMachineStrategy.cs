@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Linq;
-using StatMachine.Observer;
+using StateMachine.Node;
 
-namespace StatMachine.Strategy
+namespace StateMachine.Strategy
 {
-    public interface IStateMachineStrategy<STATE_NODE> : IDisposable
+    public interface IStateMachineStrategy : IDisposable
     {
-        IEnumerable<STATE_NODE> StateNodes{get;}
+        StateNodeCollections StateNodes{get;}
 
-        //container
-
-        void GoTo<T>() where T : STATE_NODE;
-        
+        void Start();
+        void GoTo<T>() where T : IStateNode;
         void GoTo(Type state);
     }
 }

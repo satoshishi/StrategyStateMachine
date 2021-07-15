@@ -3,44 +3,26 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Linq;
-using StatMachine.Strategy;
+using StateMachine.Strategy;
+using StateMachine.Node;
 
-namespace StatMachine.Context
+namespace StateMachine.Context
 {
-    public class StateMachineContext<STATE_NODE> : IDisposable
+    public class StateMachineContext : IDisposable
     {
-        private IStateMachineStrategy<STATE_NODE> Strategy;
+        private IStateMachineStrategy Strategy;
 
-        public StateMachineContext(
-            IStateMachineStrategy<STATE_NODE> strategy
-        )
+        public StateMachineContext(IStateMachineStrategy strategy)
         {
             Strategy = strategy;
         }
 
-        public StateMachineContext(
-            IStateMachineStrategy<STATE_NODE> strategy,
-            STATE_NODE firstState
-        )
-        {
-            Strategy = strategy;
-            Strategy.GoTo(firstState.GetType());
-        }        
+        public void Start() => Strategy.Start();
 
-        public void GoTo<T>() where T : STATE_NODE
-        {
-            Strategy.GoTo<T>();
-        }
+        public void GoTo<T>() where T : IStateNode => Strategy.GoTo<T>();
 
-        public void GoTo(Type state)
-        {
-            Strategy.GoTo(state);
-        }
+        public void GoTo(Type state) => Strategy.GoTo(state);
 
-        public void Dispose()
-        {
-            Strategy.Dispose();
-            Strategy = null;
-        }
+        public void Dispose() => Strategy.Dispose();
     }
 }

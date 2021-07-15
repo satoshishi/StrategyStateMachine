@@ -1,0 +1,17 @@
+{
+    "name": "StateMachine.Context",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b831a3abe5edd4eaebd270b8b6a311ea",
+        "GUID:1c22f18d01b5e4a188fe5676dad512a1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

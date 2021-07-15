@@ -1,6 +1,6 @@
 using System;
 
-namespace StatMachine.Observer
+namespace StateMachine.Observer
 {
     public class NotifyDisposer : IDisposable
     {
