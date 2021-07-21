@@ -5,4 +5,4 @@ https://github.com/satoshishi/StrategyStateMachine.git?path=/main/Packages/Strat
 ```
 ### Class diagram 
 
-![peek](https://user-images.githubusercontent.com/20067832/125752289-243979ab-3d99-4dee-8110-125f25db8cb4.png)
+![peek](https://user-images.githubusercontent.com/20067832/126457770-3531cdd1-0344-473c-91e9-c9fa4a7419ab.png)
