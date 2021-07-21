@@ -3,26 +3,45 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Linq;
-using StateMachine.Strategy;
+using StateMachine.Main;
 using StateMachine.Node;
 
 namespace StateMachine.Context
 {
-    public class StateMachineContext : IDisposable
+    public sealed class StateMachineContext<STATE_NODE> : IDisposable where STATE_NODE : IStateNode
     {
-        private IStateMachineStrategy Strategy;
+        private IStateMachine<STATE_NODE> StateMachine;
 
-        public StateMachineContext(IStateMachineStrategy strategy)
+        private StateNodeCollections<STATE_NODE> StateNodes;
+
+        public void Build(IStateMachine<STATE_NODE> stateMachine, StateNodeCollections<STATE_NODE> stateNode, bool disposeStateMachine = true, bool disposeStateNode = true)
         {
-            Strategy = strategy;
+            if (disposeStateMachine)
+                StateMachine?.Dispose();
+
+            if (disposeStateNode)
+                StateNodes?.Dispose();
+
+            StateMachine = stateMachine;
+            StateNodes = stateNode;
+
+            StateMachine.Build(StateNodes);
         }
 
-        public void Start() => Strategy.Start();
+        public void Build(IStateMachine<STATE_NODE> stateMachine)
+        {
+            Build(stateMachine, StateNodes, true, false);
+        }
 
-        public void GoTo<T>() where T : IStateNode => Strategy.GoTo<T>();
+        public void Build(StateNodeCollections<STATE_NODE> stateNode)
+        {
+            Build(StateMachine, stateNode, false, true);
+        }
 
-        public void GoTo(Type state) => Strategy.GoTo(state);
+        public void GoTo<T>() where T : IStateNode => StateMachine.GoTo<T>();
 
-        public void Dispose() => Strategy.Dispose();
+        public void GoTo(Type state) => StateMachine.GoTo(state);
+
+        public void Dispose() => StateMachine.Dispose();
     }
 }

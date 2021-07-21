@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace StateMachine.Observer
+namespace StateMachine.Node
 {
-    public interface ISimplyObserver<T>
+    public interface IStateNode : IDisposable
     {
-        void OnNext(T value);
+
     }
 }
