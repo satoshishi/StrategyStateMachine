@@ -7,11 +7,11 @@ using StateMachine.Node;
 
 namespace StateMachine.Strategy
 {
-    public interface IStateMachineStrategy : IDisposable
+    public interface IStateMachine<STATE_NODE> : IDisposable where STATE_NODE : IStateNode
     {
-        StateNodeCollections StateNodes{get;}
+        StateNodeCollections<STATE_NODE> StateNodes{get;}
 
-        void Start();
+        void Build(StateNodeCollections<STATE_NODE> stateNodes);
         void GoTo<T>() where T : IStateNode;
         void GoTo(Type state);
     }
