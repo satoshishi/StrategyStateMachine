@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Linq;
 using StateMachine.Node;
 
-namespace StateMachine.Strategy
+namespace StateMachine.Main
 {
     public interface IStateMachine<STATE_NODE> : IDisposable where STATE_NODE : IStateNode
     {

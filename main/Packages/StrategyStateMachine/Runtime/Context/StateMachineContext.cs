@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Linq;
-using StateMachine.Strategy;
+using StateMachine.Main;
 using StateMachine.Node;
 
 namespace StateMachine.Context
@@ -14,10 +14,13 @@ namespace StateMachine.Context
 
         private StateNodeCollections<STATE_NODE> StateNodes;
 
-        public void Build(IStateMachine<STATE_NODE> stateMachine, StateNodeCollections<STATE_NODE> stateNode)
+        public void Build(IStateMachine<STATE_NODE> stateMachine, StateNodeCollections<STATE_NODE> stateNode, bool disposeStateMachine = true, bool disposeStateNode = true)
         {
-            StateMachine?.Dispose();
-            StateNodes?.Dispose();
+            if (disposeStateMachine)
+                StateMachine?.Dispose();
+
+            if (disposeStateNode)
+                StateNodes?.Dispose();
 
             StateMachine = stateMachine;
             StateNodes = stateNode;
@@ -27,12 +30,12 @@ namespace StateMachine.Context
 
         public void Build(IStateMachine<STATE_NODE> stateMachine)
         {
-            Build(stateMachine, StateNodes);
+            Build(stateMachine, StateNodes, true, false);
         }
 
         public void Build(StateNodeCollections<STATE_NODE> stateNode)
         {
-            Build(StateMachine, stateNode);
+            Build(StateMachine, stateNode, false, true);
         }
 
         public void GoTo<T>() where T : IStateNode => StateMachine.GoTo<T>();

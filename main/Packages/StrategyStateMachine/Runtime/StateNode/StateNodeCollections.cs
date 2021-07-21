@@ -10,9 +10,9 @@ namespace StateMachine.Node
     {
         public IEnumerable<STATE_NODE> Collections { get; private set; } = null;
 
-        public STATE_NODE FirstState { get; private set; }
+        public Type FirstState { get; private set; }
 
-        public StateNodeCollections(IEnumerable<STATE_NODE> collections, STATE_NODE firstState)
+        public StateNodeCollections(IEnumerable<STATE_NODE> collections, Type firstState)
         {
             Collections = collections;
             FirstState = firstState;
@@ -31,6 +31,9 @@ namespace StateMachine.Node
 
         public void Dispose()
         {
+            foreach(STATE_NODE state in Collections)
+                state.Dispose();
+            
             Collections.ToList().Clear();
         }
     }
