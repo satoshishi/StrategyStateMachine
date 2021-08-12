@@ -29,7 +29,8 @@ public class Sample01Main : MonoBehaviour
         );
 
         context = new StateMachineContext<SimplyStateNode>();
-        context.Build(stateMachine1, nodes);
+        context.Replace(stateMachine1,nodes);
+        context.Build();
     }
 
     // Update is called once per frame
@@ -40,6 +41,9 @@ public class Sample01Main : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.S))
             context.GoTo<Sample01StateA>();
         if (Input.GetKeyUp(KeyCode.D))
-            context.Build(stateMachine2);
+        {
+            context.Replace(stateMachine2);
+            context.Build();
+        }
     }
 }
