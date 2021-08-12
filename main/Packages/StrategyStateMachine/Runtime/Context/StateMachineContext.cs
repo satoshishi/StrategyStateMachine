@@ -14,28 +14,24 @@ namespace StateMachine.Context
 
         private StateNodeCollections<STATE_NODE> StateNodes;
 
-        public void Build(IStateMachine<STATE_NODE> stateMachine, StateNodeCollections<STATE_NODE> stateNode, bool disposeStateMachine = true, bool disposeStateNode = true)
+        public void Build() => StateMachine.Build(StateNodes);
+
+        public void Replace(IStateMachine<STATE_NODE> stateMachine)
         {
-            if (disposeStateMachine)
-                StateMachine?.Dispose();
-
-            if (disposeStateNode)
-                StateNodes?.Dispose();
-
+            StateMachine?.Dispose();
             StateMachine = stateMachine;
-            StateNodes = stateNode;
-
-            StateMachine.Build(StateNodes);
         }
 
-        public void Build(IStateMachine<STATE_NODE> stateMachine)
+        public void Replace(StateNodeCollections<STATE_NODE> stateNodes)
         {
-            Build(stateMachine, StateNodes, true, false);
+            StateNodes?.Dispose();
+            StateNodes = stateNodes;
         }
 
-        public void Build(StateNodeCollections<STATE_NODE> stateNode)
+        public void Replace(IStateMachine<STATE_NODE> stateMachine, StateNodeCollections<STATE_NODE> stateNodes)
         {
-            Build(StateMachine, stateNode, false, true);
+            Replace(stateNodes);
+            Replace(stateMachine);
         }
 
         public void GoTo<T>() where T : IStateNode => StateMachine.GoTo<T>();
