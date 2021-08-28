@@ -14,6 +14,8 @@ namespace StateMachine.Context
 
         private StateNodeCollections<STATE_NODE> StateNodes;
 
+        public STATE_NODE CurrentState { get => StateMachine.CurrentState; }
+
         public void Build() => StateMachine.Build(StateNodes);
 
         public void Replace(IStateMachine<STATE_NODE> stateMachine)

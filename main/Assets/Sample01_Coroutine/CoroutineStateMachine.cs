@@ -10,9 +10,10 @@ namespace StateMachine.Main
     {
         public StateNodeCollections<SimplyStateNode> StateNodes { get => stateNodes; }
         private StateNodeCollections<SimplyStateNode> stateNodes = null;
-        private Queue<SimplyStateNode> requestQueue = new Queue<SimplyStateNode>();
-
+        public SimplyStateNode CurrentState { get => currentStateNode; }
         private SimplyStateNode currentStateNode = null;
+
+        private Queue<SimplyStateNode> requestQueue = new Queue<SimplyStateNode>();
         private Coroutine activeLoop = null;
 
         public void Build(StateNodeCollections<SimplyStateNode> stateNode)
