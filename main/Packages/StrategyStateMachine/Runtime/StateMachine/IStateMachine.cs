@@ -9,7 +9,8 @@ namespace StateMachine.Main
 {
     public interface IStateMachine<STATE_NODE> : IDisposable where STATE_NODE : IStateNode
     {
-        StateNodeCollections<STATE_NODE> StateNodes{get;}
+        StateNodeCollections<STATE_NODE> StateNodes { get; }
+        STATE_NODE CurrentState { get; }
 
         void Build(StateNodeCollections<STATE_NODE> stateNodes);
         void GoTo<T>() where T : IStateNode;
