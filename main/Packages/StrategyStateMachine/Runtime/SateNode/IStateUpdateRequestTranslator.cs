@@ -5,8 +5,8 @@ using System;
 
 namespace StateMachine
 {
-    public interface IStateMachine : IDisposable
-    {   
-        void ChangeState(IStateNode target);    
+    public interface IStateUpdateRequestTranslator<FROM,TO> where TO : IStateNode
+    {
+        TO Handle(FROM parameter);
     }
 }
